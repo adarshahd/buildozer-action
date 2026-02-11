@@ -43,12 +43,7 @@ def fix_home():
 def install_buildozer(buildozer_version):
     # Install required Buildozer version
     print("::group::Installing Buildozer")
-    #Install pipx to handle packages in a virtual environment
-    pipx_install = [sys.executable] + "-m pip install --user --upgrade".split()
-    subprocess.check_call([*pipx_install, "pipx"])
-    ensure_cmd = [sys.executable] + "-m pipx ensurepath"
-    subprocess.check_call(ensure_cmd)
-    pip_install = [sys.executable] + "-m pipx install --user --upgrade".split()
+    pip_install = [sys.executable] + "-m pip install --user --upgrade --break-system-packages".split()
     if buildozer_version == "stable":
         # Install stable buildozer from PyPI
         subprocess.check_call([*pip_install, "buildozer"])
