@@ -79,6 +79,8 @@ def apply_buildozer_settings():
     # Do not allow to change directories
     env["BUILDOZER_BUILD_DIR"] = "./.buildozer"
     env["BUILDOZER_BIN"] = "./bin"
+    print("Apply pip fix for pip install")
+    subprocess.check_call("python3 -m pip config set global.break-system-packages true")
 
 
 def change_directory(repository_root, workdir):
